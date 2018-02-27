@@ -28,7 +28,6 @@ export default function SearchBar(props: TProps) {
           underlineColorAndroid={'transparent'}
           placeholderTextColor={'#9b9b9b'}
           autoCorrect={false}
-          caretHidden={true}
           autoCapitalize={'none'}
           placeholder={'Номер рейса или направление'}
         />

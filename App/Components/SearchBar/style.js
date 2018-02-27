@@ -1,4 +1,4 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet, Platform } from 'react-native';
 
 export default StyleSheet.create({
   container: {
@@ -12,7 +12,7 @@ export default StyleSheet.create({
   },
   input: {
     backgroundColor: 'transparent',
-    fontFamily: 'sans-serif-thin',
+    fontFamily: Platform.OS === 'ios' ? 'Roboto-Light' : 'sans-serif-thin',
     fontSize: 12,
     textAlign: 'center',
     color: '#000000',
