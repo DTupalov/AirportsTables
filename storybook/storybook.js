@@ -5,9 +5,9 @@ import { getStorybookUI, configure } from '@storybook/react-native';
 
 // import stories
 configure(() => {
+  require('../App/Components/BottomMenu/story');
   require('../App/Components/SearchBar/story');
   require('../App/Components/Icons/story');
-  require('../App/Components/BottomMenu/story');
 }, module);
 
 // This assumes that storybook is running on the same host as your RN packager,
