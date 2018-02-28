@@ -1,51 +1,65 @@
 //@flow
 
 import React from 'react';
-import {
-  View,
-  TextInput,
-  Text,
-  TouchableWithoutFeedback,
-  Alert,
-  DatePickerAndroid,
-} from 'react-native';
-
+import { View, TextInput, Text, TouchableWithoutFeedback } from 'react-native';
+import DateTimePicker from 'react-native-modal-datetime-picker';
 import Icon from 'react-native-vector-icons/SimpleLineIcons';
 
 import style from './style';
 
 type TProps = {
   onChange: (event: Object) => void,
-  onDatePick: (date: Object) => void,
+  onDatePick: (date: Date) => void,
 };
 
-export default function SearchBar(props: TProps) {
-  return (
-    <View style={style.container}>
-      <View style={style.inputContainer}>
-        <TextInput
-          style={style.input}
-          underlineColorAndroid={'transparent'}
-          placeholderTextColor={'#9b9b9b'}
-          autoCorrect={false}
-          autoCapitalize={'none'}
-          placeholder={'Номер рейса или направление'}
-        />
+type TState = {
+  isCalendarOpen: boolean,
+};
+
+export default class SearchBar extends React.Component<TProps, TState> {
+  state = { isCalendarOpen: false };
+
+  openCalendar = () => {
+    this.setState({
+      isCalendarOpen: true,
+    });
+  };
+
+  closeCalendar = () => {
+    this.setState({
+      isCalendarOpen: false,
+    });
+  };
+
+  onDatePicked = (date: Date) => {
+    this.closeCalendar();
+    this.props.onDatePick(date);
+  };
+
+  render() {
+    return (
+      <View style={style.container}>
+        <View style={style.inputContainer}>
+          <TextInput
+            style={style.input}
+            underlineColorAndroid={'transparent'}
+            placeholderTextColor={'#9b9b9b'}
+            autoCorrect={false}
+            autoCapitalize={'none'}
+            placeholder={'Номер рейса или направление'}
+          />
+        </View>
+        <View style={style.iconContainer}>
+          <TouchableWithoutFeedback onPress={this.openCalendar}>
+            <Icon name={'calendar'} size={20} />
+          </TouchableWithoutFeedback>
+          <DateTimePicker
+            isVisible={this.state.isCalendarOpen}
+            onConfirm={this.onDatePicked}
+            onCancel={this.closeCalendar}
+          />
+        </View>
       </View>
-      <View style={style.iconContainer}>
-        <TouchableWithoutFeedback
-          onPress={async () => {
-            const date = await DatePickerAndroid.open({
-              date: new Date(),
-              minDate: new Date(2018, 1, 25),
-              maxDate: new Date(2018, 1, 27),
-            });
-            props.onDatePick(date);
-          }}
-        >
-          <Icon name={'calendar'} size={20} />
-        </TouchableWithoutFeedback>
-      </View>
-    </View>
-  );
+    );
+  }
 }

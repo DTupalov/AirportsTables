@@ -5,7 +5,6 @@ import { getStorybookUI, configure } from '@storybook/react-native';
 
 // import stories
 configure(() => {
-  // require('./stories');
   require('../App/Components/SearchBar/story');
   require('../App/Components/BottomMenu/story');
 }, module);
