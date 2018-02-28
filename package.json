@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start",
+    "start-android": "react-native run-android && npm run storybook",
     "test": "jest",
     "storybook": "storybook start -p 7007"
   },
@@ -11,7 +12,7 @@
     "react": "16.2.0",
     "react-native": "0.53.3",
     "react-native-modal-datetime-picker": "^4.13.0",
-    "react-native-vector-icons": "^4.5.0"
+    "react-native-svg": "^6.2.2"
   },
   "devDependencies": {
     "@storybook/addon-actions": "^3.3.14",

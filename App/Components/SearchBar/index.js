@@ -3,8 +3,8 @@
 import React from 'react';
 import { View, TextInput, Text, TouchableWithoutFeedback } from 'react-native';
 import DateTimePicker from 'react-native-modal-datetime-picker';
-import Icon from 'react-native-vector-icons/SimpleLineIcons';
 
+import { CalendarIcon } from '../Icons';
 import style from './style';
 
 type TProps = {
@@ -51,7 +51,9 @@ export default class SearchBar extends React.Component<TProps, TState> {
         </View>
         <View style={style.iconContainer}>
           <TouchableWithoutFeedback onPress={this.openCalendar}>
-            <Icon name={'calendar'} size={20} />
+            <View>
+              <CalendarIcon opacity={0.3} />
+            </View>
           </TouchableWithoutFeedback>
           <DateTimePicker
             isVisible={this.state.isCalendarOpen}
