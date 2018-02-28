@@ -59,6 +59,8 @@ export default class SearchBar extends React.Component<TProps, TState> {
             isVisible={this.state.isCalendarOpen}
             onConfirm={this.onDatePicked}
             onCancel={this.closeCalendar}
+            minimumDate={new Date(new Date().setDate(new Date().getDate() - 1))}
+            maximumDate={new Date(new Date().setDate(new Date().getDate() + 1))}
           />
         </View>
       </View>
