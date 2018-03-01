@@ -12,4 +12,7 @@ export default StyleSheet.create({
     justifyContent: 'space-around',
     alignItems: 'center',
   },
+  button: {
+    width: 35,
+  },
 });

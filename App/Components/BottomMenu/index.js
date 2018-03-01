@@ -13,7 +13,9 @@ import {
 import style from './style';
 
 type TProps = {
-  onClick: (button: 'arrived' | 'depart' | 'watch' | 'menu' | 'close') => void,
+  onClick: (button: 'arrived' | 'depart' | 'watch') => void,
+  onMenuOpen: () => void,
+  onMenuClose: () => void,
   active: 'arrived' | 'depart' | 'watch',
   isMenuOpen: boolean,
 };
@@ -23,7 +25,7 @@ export default function BottomMenu(props: TProps) {
     <View style={style.container}>
       <View style={style.buttonContainer}>
         <TouchableWithoutFeedback onPress={() => props.onClick('arrived')}>
-          <View>
+          <View style={style.button}>
             <ArrivedIcon
               color={'#fff'}
               opacity={
@@ -33,7 +35,7 @@ export default function BottomMenu(props: TProps) {
           </View>
         </TouchableWithoutFeedback>
         <TouchableWithoutFeedback onPress={() => props.onClick('depart')}>
-          <View>
+          <View style={style.button}>
             <DepartIcon
               color={'#fff'}
               opacity={props.active === 'depart' && !props.isMenuOpen ? 1 : 0.3}
@@ -41,7 +43,7 @@ export default function BottomMenu(props: TProps) {
           </View>
         </TouchableWithoutFeedback>
         <TouchableWithoutFeedback onPress={() => props.onClick('watch')}>
-          <View>
+          <View style={style.button}>
             <EyeIcon
               color={'#fff'}
               opacity={props.active === 'watch' && !props.isMenuOpen ? 1 : 0.3}
@@ -49,14 +51,14 @@ export default function BottomMenu(props: TProps) {
           </View>
         </TouchableWithoutFeedback>
         {props.isMenuOpen ? (
-          <TouchableWithoutFeedback onPress={() => props.onClick('close')}>
-            <View>
+          <TouchableWithoutFeedback onPress={() => props.onMenuClose()}>
+            <View style={style.button}>
               <CloseIcon color={'#fff'} opacity={1} />
             </View>
           </TouchableWithoutFeedback>
         ) : (
-          <TouchableWithoutFeedback onPress={() => props.onClick('menu')}>
-            <View>
+          <TouchableWithoutFeedback onPress={() => props.onMenuOpen()}>
+            <View style={style.button}>
               <MenuIcon color={'#fff'} opacity={0.3} />
             </View>
           </TouchableWithoutFeedback>
