@@ -1,6 +1,6 @@
 //@flow
 import React from 'react';
-import { View, Text, Switch, TouchableWithoutFeedback } from 'react-native';
+import { View, Text, Switch, TouchableWithoutFeedback, Platform } from 'react-native';
 
 import style from './style';
 
@@ -24,9 +24,10 @@ export default function LabeledSwitch(props: TProps) {
 
       <Switch
         value={props.value}
-        tintColor={'#000'}
-        onTintColor={'#fff'}
-        thumbTintColor={'#fff'}
+        style={Platform.OS === 'ios' ? {backgroundColor: '#000', borderRadius: 17} : null}
+        tintColor={'#fff'}
+        onTintColor={Platform.OS === 'ios' ? '#fff' : '#fff'}
+        thumbTintColor={Platform.OS === 'ios' ? '#e1e1e1' : '#fff'}
         onValueChange={props.onChange}
       />
     </View>
