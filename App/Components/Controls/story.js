@@ -1,36 +1,40 @@
 //@flow
-
 import React from 'react';
 import { View } from 'react-native';
 import { storiesOf } from '@storybook/react-native';
 import { action } from '@storybook/addon-actions';
 import { withState } from '@dump247/storybook-state';
 
-import BottomMenu from './index';
+import { Switch, ThemePicker } from './index';
 
-// Why setTimeout
-// https://github.com/storybooks/storybook/issues/1192
 setTimeout(() => {
-  storiesOf('BottomMenu', module)
+  storiesOf('Controls', module)
     .addDecorator(storyFn => (
       <View
         style={{
           flex: 1,
           justifyContent: 'center',
           alignItems: 'center',
+          backgroundColor: '#e1e1e1',
         }}
       >
         {storyFn()}
       </View>
     ))
     .add(
-      'default',
-      withState({ isMenuOpen: false, active: 'arrived' }, store => (
-        <BottomMenu
-          onClick={button => store.set({ active: button, isMenuOpen: false })}
-          onMenuOpen={() => store.set({ isMenuOpen: true })}
-          onMenuClose={() => store.set({ isMenuOpen: false })}
+      'Switch',
+      withState({ value: false }, store => (
+        <Switch {...store.state} onChange={value => store.set({ value })} />
+      ))
+    )
+    .add(
+      'ThemePicker',
+      withState({ theme: 'blue' }, store => (
+        <ThemePicker
           {...store.state}
+          onThemeChange={theme => {
+            store.set({ theme });
+          }}
         />
       ))
     );
