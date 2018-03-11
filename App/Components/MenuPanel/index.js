@@ -1,45 +1,51 @@
 //@flow
 import React from 'react';
-import { View, Text } from 'react-native';
 
 import { Switch, ThemePicker } from '../Controls';
-
-import style from './style';
+import {
+  MenuPanelContainer,
+  RowContainer,
+  LabelContainer,
+  MenuPanelText,
+  ControlContainer,
+} from './styled';
 
 type ThemeEnum = 'blue' | 'green' | 'purple' | 'pink';
 
 type TProps = {
   isNightModeOn: boolean,
-  onNightModeChange: boolean,
   theme: ThemeEnum,
+  onNightModeChange: (value: boolean) => void,
   onThemeChange: (theme: ThemeEnum) => void,
 };
 
-export default function MenuPanel(props: TProps) {
+function MenuPanel(props: TProps) {
   return (
-    <View style={style.container}>
-      <View style={style.rowContainer}>
-        <View style={style.labelContainer}>
-          <Text style={style.text}>Ночной режим</Text>
-        </View>
-        <View style={style.controlContainer}>
+    <MenuPanelContainer>
+      <RowContainer>
+        <LabelContainer>
+          <MenuPanelText>Ночной режим</MenuPanelText>
+        </LabelContainer>
+        <ControlContainer>
           <Switch
             value={props.isNightModeOn}
             onChange={props.onNightModeChange}
           />
-        </View>
-      </View>
-      <View style={style.rowContainer}>
-        <View style={style.labelContainer}>
-          <Text style={style.text}>Тема</Text>
-        </View>
-        <View style={style.controlContainer}>
+        </ControlContainer>
+      </RowContainer>
+      <RowContainer>
+        <LabelContainer>
+          <MenuPanelText>Тема</MenuPanelText>
+        </LabelContainer>
+        <ControlContainer>
           <ThemePicker
             theme={props.theme}
             onThemeChange={props.onThemeChange}
           />
-        </View>
-      </View>
-    </View>
+        </ControlContainer>
+      </RowContainer>
+    </MenuPanelContainer>
   );
 }
+
+export default MenuPanel;

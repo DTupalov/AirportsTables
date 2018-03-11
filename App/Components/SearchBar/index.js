@@ -1,11 +1,16 @@
 //@flow
 
 import React from 'react';
-import { View, TextInput, Text, TouchableWithoutFeedback } from 'react-native';
+import { View, Text, TouchableWithoutFeedback } from 'react-native';
 import DateTimePicker from 'react-native-modal-datetime-picker';
 
 import { CalendarIcon } from '../Icons';
-import style from './style';
+import {
+  SearchContainer,
+  InputContainer,
+  TextInput,
+  IconContainer,
+} from './styled';
 
 type TProps = {
   onChange: (event: Object) => void,
@@ -20,6 +25,7 @@ export default class SearchBar extends React.Component<TProps, TState> {
   state = { isCalendarOpen: false };
 
   openCalendar = () => {
+    console.log('openCalendar');
     this.setState({
       isCalendarOpen: true,
     });
@@ -38,18 +44,17 @@ export default class SearchBar extends React.Component<TProps, TState> {
 
   render() {
     return (
-      <View style={style.container}>
-        <View style={style.inputContainer}>
+      <SearchContainer>
+        <InputContainer>
           <TextInput
-            style={style.input}
             underlineColorAndroid={'transparent'}
             placeholderTextColor={'#9b9b9b'}
             autoCorrect={false}
             autoCapitalize={'none'}
             placeholder={'Номер рейса или направление'}
           />
-        </View>
-        <View style={style.iconContainer}>
+        </InputContainer>
+        <IconContainer>
           <TouchableWithoutFeedback onPress={this.openCalendar}>
             <View>
               <CalendarIcon opacity={0.3} />
@@ -62,8 +67,8 @@ export default class SearchBar extends React.Component<TProps, TState> {
             minimumDate={new Date(new Date().setDate(new Date().getDate() - 1))}
             maximumDate={new Date(new Date().setDate(new Date().getDate() + 1))}
           />
-        </View>
-      </View>
+        </IconContainer>
+      </SearchContainer>
     );
   }
 }

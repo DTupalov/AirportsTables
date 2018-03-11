@@ -1,3 +1,5 @@
+//@flow
+
 import Switch from './Switch';
 import ThemePicker from './ThemePicker';
 

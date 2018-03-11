@@ -4,14 +4,14 @@ import { View, Text, TouchableWithoutFeedback } from 'react-native';
 
 import style from './style';
 
-type ThemeEnum = 'blue' | 'green' | 'purple' | 'pink';
+export type ThemeEnum = 'blue' | 'green' | 'purple' | 'pink';
 
 type TProps = {
   theme: ThemeEnum,
   onThemeChange: (theme: ThemeEnum) => void,
 };
 
-const ThemeColorMap = {
+export const ThemeColorMap = {
   blue: '#1086e8',
   green: '#00bf63',
   purple: '#67217c',

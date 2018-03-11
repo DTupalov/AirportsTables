@@ -1,0 +1,10 @@
+{
+    "javascript.validate.enable": false,
+    "prettier.trailingComma": "es5",
+    "flow.pathToFlow": "${workspaceRoot}/node_modules/.bin/flow",
+    "flow.useNPMPackagedFlow": true,
+    "prettier.singleQuote": true,
+    "[javascript]": {
+        "editor.formatOnSave": true
+    }
+}
