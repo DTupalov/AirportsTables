@@ -5,7 +5,7 @@ import styled from 'styled-components';
 
 export const SearchContainer: React$ComponentType<*> = styled.View`
   background-color: #ffffff;
-  width: 288;
+  width: 100%;
   height: 40;
   padding-top: 10;
   padding-left: 16;
@@ -14,7 +14,7 @@ export const SearchContainer: React$ComponentType<*> = styled.View`
 `;
 
 export const InputContainer = styled.View`
-  flex: 0.8;
+  flex: 1;
 `;
 
 export const TextInput = styled.TextInput`
@@ -23,13 +23,14 @@ export const TextInput = styled.TextInput`
   font-size: 12;
   text-align: center;
   color: #000000;
-  width: 185;
+  width: 100%;
   height: 20;
   padding: 0;
+  text-align: left;
 `;
 
 export const IconContainer = styled.View`
-  flex: 0.2;
   align-items: flex-end;
   padding-right: 10;
+  padding-left: 10;
 `;
