@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start",
-    "start-android": "react-native run-android && npm run storybook",
+    "storybook:android": "react-native run-android && npm run storybook",
+    "storybook:ios": "react-native run-ios && npm run storybook",
     "test": "jest",
     "storybook": "storybook start -p 7007"
   },

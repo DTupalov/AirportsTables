@@ -26,3 +26,7 @@ If you have such message "Accessing nonexistent addons channel" then you need to
       ...
     }, 0)
 
+### Possible issues if you are migrating to a new MacOS or XCode or start project on a new Macbook
+https://github.com/facebook/react-native/issues/8868
+https://github.com/facebook/react-native/issues/19569#issuecomment-432998870
+https://github.com/facebook/react-native/issues/20774
